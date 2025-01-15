@@ -2,16 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.jer.newsappcompose"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.jer.newsappcompose"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -43,22 +44,26 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
+
 }
 
 dependencies {
 
+    //coil
     implementation(libs.coil.compose)
 
+    //hilt
+    implementation (libs.androidx.hilt.navigation.compose)
     implementation (libs.hilt.android)
     kapt (libs.hilt.compiler)
+    kapt ("androidx.hilt:hilt-compiler:1.0.0")
 
+
+    //retrofit
     implementation (libs.retrofit)
+    //datastore
     implementation (libs.androidx.datastore.preferences)
+    //splash
     implementation (libs.androidx.core.splashscreen)
 
     implementation(libs.androidx.core.ktx)
