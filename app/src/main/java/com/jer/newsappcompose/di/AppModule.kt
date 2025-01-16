@@ -3,9 +3,9 @@ package com.jer.newsappcompose.di
 import android.app.Application
 import com.jer.newsappcompose.data.manager.LocalUserManagerImpl
 import com.jer.newsappcompose.domain.manager.LocalUserManager
-import com.jer.newsappcompose.domain.usecase.AppEntryUsecases
-import com.jer.newsappcompose.domain.usecase.ReadAppEntry
-import com.jer.newsappcompose.domain.usecase.SaveAppEntry
+import com.jer.newsappcompose.domain.usecase.appentry.AppEntryUsecases
+import com.jer.newsappcompose.domain.usecase.appentry.ReadAppEntry
+import com.jer.newsappcompose.domain.usecase.appentry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

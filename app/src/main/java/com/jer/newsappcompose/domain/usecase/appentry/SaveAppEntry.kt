@@ -1,4 +1,4 @@
-package com.jer.newsappcompose.domain.usecase
+package com.jer.newsappcompose.domain.usecase.appentry
 
 import com.jer.newsappcompose.domain.manager.LocalUserManager
 

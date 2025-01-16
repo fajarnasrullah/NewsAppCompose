@@ -52,6 +52,13 @@ dependencies {
     //coil
     implementation(libs.coil.compose)
 
+    //Paging 3
+    implementation (libs.androidx.paging.runtime)
+    implementation (libs.androidx.paging.compose)
+
+    //Accompanist
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+
     //navigation compose
     implementation (libs.androidx.navigation.compose)
 
