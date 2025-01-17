@@ -71,6 +71,7 @@ dependencies {
 
     //retrofit
     implementation (libs.retrofit)
+    implementation (libs.converter.gson)
     //datastore
     implementation (libs.androidx.datastore.preferences)
     //splash
