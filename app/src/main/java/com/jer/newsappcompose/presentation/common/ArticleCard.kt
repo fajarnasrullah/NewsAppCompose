@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.jer.newsappcompose.R
@@ -40,14 +41,14 @@ import com.jer.newsappcompose.ui.theme.NewsAppComposeTheme
 fun ArticleCard(
     modifier: Modifier = Modifier,
     article: Article,
-    onClick: (() -> Unit)
+    onClick: (() -> Unit)? = null
     ) {
 
     val context = LocalContext.current
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .clickable { onClick }
+            .clickable { onClick?.invoke() }
             .padding(SmallPadding)
     ) {
         AsyncImage(
@@ -81,6 +82,7 @@ fun ArticleCard(
                 Text(
                     text = article.source.name,
                     style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
+                    fontSize = 10.sp,
                     color = colorResource(id = R.color.body),
                 )
                 Spacer(modifier = Modifier.width( SmallPadding))
@@ -95,7 +97,7 @@ fun ArticleCard(
 
                 Text(
                     text = article.publishedAt,
-                    style = MaterialTheme.typography.bodySmall,
+                    fontSize = 10.sp,
                     color = colorResource(id = R.color.text_medium),
                 )
             }

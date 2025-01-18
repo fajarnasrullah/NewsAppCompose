@@ -1,5 +1,6 @@
 package com.jer.newsappcompose.data.remote
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.jer.newsappcompose.domain.model.Article
@@ -16,6 +17,7 @@ class NewsPagingSource(
         val page = params.key ?: 1
         return try {
             val newsResponse = newsApi.getNews(page = page, sources = sources)
+            Log.d("NewsPagingSource", "Succeed to get:" + newsResponse.toString())
             totalNewsCount += newsResponse.articles.size
             val articles = newsResponse.articles.distinctBy { it.title }
 
