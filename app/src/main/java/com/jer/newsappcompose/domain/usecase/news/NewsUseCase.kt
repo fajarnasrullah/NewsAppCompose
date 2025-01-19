@@ -1,4 +1,9 @@
 package com.jer.newsappcompose.domain.usecase.news
 
-class NewsUseCase( val getNews: GetNews) {
+import com.jer.newsappcompose.presentation.search.SearchEvent
+
+class NewsUseCase(
+    val getNews: GetNews,
+    val searchNews: SearchNews
+) {
 }

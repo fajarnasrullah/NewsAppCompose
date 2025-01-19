@@ -17,6 +17,9 @@ import com.jer.newsappcompose.presentation.home.HomeViewModel
 import com.jer.newsappcompose.presentation.onBoarding.OnBoardingEvent
 import com.jer.newsappcompose.presentation.onBoarding.OnBoardingScreen
 import com.jer.newsappcompose.presentation.onBoarding.OnBoardingViewModel
+import com.jer.newsappcompose.presentation.search.SearchEvent
+import com.jer.newsappcompose.presentation.search.SearchScreen
+import com.jer.newsappcompose.presentation.search.SearchViewModel
 
 @Composable
 fun NavGraph (startDestination: String) {
@@ -41,15 +44,21 @@ fun NavGraph (startDestination: String) {
             startDestination = Route.HomeScreen.route
         ) {
             composable(route = Route.HomeScreen.route) {
-                val viewModel: HomeViewModel = hiltViewModel()
-                val articles = viewModel.news.collectAsLazyPagingItems()
-                HomeScreen(
-                    articles = articles,
-                    navigate = {}
-                )
+//                val viewModel: HomeViewModel = hiltViewModel()
+//                val articles = viewModel.news.collectAsLazyPagingItems()
+//                HomeScreen(
+//                    articles = articles,
+//                    navigate = {}
+//                )
+                val viewModel: SearchViewModel = hiltViewModel()
+                SearchScreen(state = viewModel.state.value, event =  viewModel::onEvent, navigate = {})
+
             }
             composable(route = Route.SearchScreen.route) {
 
+//                val viewModel: SearchViewModel = hiltViewModel()
+//                SearchScreen(state = viewModel.state.value, event =  {viewModel::onEvent}, navigate = {})
+//
             }
             composable(route = Route.BookmarkScreen.route) {
 
