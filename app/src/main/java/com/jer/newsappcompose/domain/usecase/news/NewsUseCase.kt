@@ -4,6 +4,9 @@ import com.jer.newsappcompose.presentation.search.SearchEvent
 
 class NewsUseCase(
     val getNews: GetNews,
-    val searchNews: SearchNews
+    val searchNews: SearchNews,
+    val upsertArticle: UpsertArticle,
+    val deleteArticle: DeleteArticle,
+    val selectArticle: SelectArticle
 ) {
 }

@@ -2,6 +2,7 @@ package com.jer.newsappcompose.di
 
 import android.app.Application
 import androidx.room.Room
+import com.jer.newsappcompose.data.local.NewsDao
 import com.jer.newsappcompose.data.local.NewsDatabase
 import com.jer.newsappcompose.data.local.NewsTypeConverter
 import com.jer.newsappcompose.data.manager.LocalUserManagerImpl
@@ -12,9 +13,12 @@ import com.jer.newsappcompose.domain.repository.NewsRepository
 import com.jer.newsappcompose.domain.usecase.appentry.AppEntryUsecases
 import com.jer.newsappcompose.domain.usecase.appentry.ReadAppEntry
 import com.jer.newsappcompose.domain.usecase.appentry.SaveAppEntry
+import com.jer.newsappcompose.domain.usecase.news.DeleteArticle
 import com.jer.newsappcompose.domain.usecase.news.GetNews
 import com.jer.newsappcompose.domain.usecase.news.NewsUseCase
 import com.jer.newsappcompose.domain.usecase.news.SearchNews
+import com.jer.newsappcompose.domain.usecase.news.SelectArticle
+import com.jer.newsappcompose.domain.usecase.news.UpsertArticle
 import com.jer.newsappcompose.util.Constants.BASE_URL
 import com.jer.newsappcompose.util.Constants.NEWS_DB_NAME
 import dagger.Module
@@ -64,10 +68,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsUseCases(newsRepository: NewsRepository) : NewsUseCase {
+    fun provideNewsUseCases(newsRepository: NewsRepository, newsDao: NewsDao) : NewsUseCase {
         return NewsUseCase(
             GetNews(newsRepository),
-            SearchNews(newsRepository)
+            SearchNews(newsRepository),
+            UpsertArticle(newsDao),
+            DeleteArticle(newsDao),
+            SelectArticle(newsDao)
         )
     }
 

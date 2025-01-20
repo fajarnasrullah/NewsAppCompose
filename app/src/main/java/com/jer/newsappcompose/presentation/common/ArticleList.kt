@@ -16,6 +16,37 @@ import com.jer.newsappcompose.presentation.Dimens.MediumPadding1
 import com.jer.newsappcompose.presentation.Dimens.VerySmallPadding
 import kotlin.concurrent.timer
 
+
+
+@Composable
+fun ArticleList(
+    modifier: Modifier = Modifier,
+    articles: List<Article>,
+    onClick: (Article) -> Unit
+) {
+
+    if (articles.isEmpty()) {
+        EmptyScreen()
+    }
+
+        LazyColumn(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+            contentPadding = PaddingValues(all = VerySmallPadding),
+        ) {
+            items(count = articles.size,) { count ->
+                val article = articles[count]
+                ArticleCard(article = article, onClick = { onClick(article) })
+
+            }
+        }
+
+}
+
+
+
+
+
 @Composable
 fun ArticleList(
     modifier: Modifier = Modifier,
