@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.jer.newsappcompose.presentation.detail.DetailsScreen
 import com.jer.newsappcompose.presentation.home.HomeScreen
 import com.jer.newsappcompose.presentation.home.HomeViewModel
 import com.jer.newsappcompose.presentation.onBoarding.OnBoardingEvent
@@ -51,7 +52,8 @@ fun NavGraph (startDestination: String) {
 //                    navigate = {}
 //                )
                 val viewModel: SearchViewModel = hiltViewModel()
-                SearchScreen(state = viewModel.state.value, event =  viewModel::onEvent, navigate = {})
+                SearchScreen(state = viewModel.state.value, event =  viewModel::onEvent, navigateToDetail = {})
+
 
             }
             composable(route = Route.SearchScreen.route) {
@@ -64,6 +66,7 @@ fun NavGraph (startDestination: String) {
 
             }
             composable(route = Route.DetailsScreen.route) {
+
 
             }
         }
