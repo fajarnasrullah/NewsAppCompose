@@ -13,14 +13,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Blue,
-    secondary = Black,
+    primary = Color.White,
+    secondary = Color.White,
+    background = Black,
     error = DarkRed,
     surface = LightBlack
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = Blue,
+    secondary = Color(0xff000000),
     background = Color.White,
     error = LightRed,
     surface = Color.White
@@ -40,7 +42,7 @@ private val LightColorScheme = lightColorScheme(
 fun NewsAppComposeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

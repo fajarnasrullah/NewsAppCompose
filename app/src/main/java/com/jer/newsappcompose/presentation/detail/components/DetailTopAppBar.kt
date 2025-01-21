@@ -32,8 +32,8 @@ fun DetailTopAppBar(
         title = {  },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.background,
-            navigationIconContentColor = colorResource(id = R.color.body),
-            actionIconContentColor = colorResource(id = R.color.body)
+            navigationIconContentColor = MaterialTheme.colorScheme.primary,
+            actionIconContentColor =MaterialTheme.colorScheme.primary
         ),
         navigationIcon = {
             IconButton(onClick = onBackClick) {

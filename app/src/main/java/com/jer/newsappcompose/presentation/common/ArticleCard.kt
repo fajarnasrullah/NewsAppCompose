@@ -1,5 +1,6 @@
 package com.jer.newsappcompose.presentation.common
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -39,7 +40,9 @@ import com.jer.newsappcompose.ui.theme.NewsAppComposeTheme
 
 @Composable
 fun ArticleCard(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
+        .background(MaterialTheme.colorScheme.background)
+    ,
     article: Article,
     onClick: (() -> Unit)? = null
     ) {
@@ -72,7 +75,7 @@ fun ArticleCard(
             Text(
                 text = article.title,
                 style = MaterialTheme.typography.bodyMedium,
-                color = colorResource(id = R.color.text_title),
+                color = MaterialTheme.colorScheme.secondary,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
@@ -83,13 +86,14 @@ fun ArticleCard(
                     text = article.source.name,
                     style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
                     fontSize = 10.sp,
-                    color = colorResource(id = R.color.body),
+                    color = MaterialTheme.colorScheme.secondary,
                 )
                 Spacer(modifier = Modifier.width( SmallPadding))
                 
                 Icon(
                     painter = painterResource(id = R.drawable.ic_time),
                     contentDescription = null,
+                    tint =  MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.size(SmallIconSize),
                 )
 
@@ -98,7 +102,7 @@ fun ArticleCard(
                 Text(
                     text = article.publishedAt,
                     fontSize = 10.sp,
-                    color = colorResource(id = R.color.text_medium),
+                    color = MaterialTheme.colorScheme.secondary,
                 )
             }
 
@@ -109,6 +113,7 @@ fun ArticleCard(
 }
 
 @Preview(showBackground = true,)
+@Preview(showBackground = true, uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun PreviewArticleCard() {
     NewsAppComposeTheme {

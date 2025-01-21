@@ -21,7 +21,7 @@ fun NewsButton(
     Button(
         shape = RoundedCornerShape(size = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primary,
+            containerColor = Color(0xFF1877F2),
             contentColor = Color.White
         ),
         onClick = onClick ,

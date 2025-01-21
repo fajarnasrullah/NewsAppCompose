@@ -3,6 +3,7 @@ package com.jer.newsappcompose.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.jer.newsappcompose.data.local.NewsDao
 import com.jer.newsappcompose.data.remote.NewsApi
 import com.jer.newsappcompose.data.remote.NewsPagingSource
 import com.jer.newsappcompose.data.remote.SearchNewsPagingSource
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.Flow
 
 class NewsRepositoryImpl(
     private val newsApi: NewsApi,
+    private val newsDao: NewsDao
 ): NewsRepository {
     override fun getNews(sources: List<String>): Flow<PagingData<Article>> {
         return Pager(
@@ -36,5 +38,21 @@ class NewsRepositoryImpl(
                 )
             }
         ).flow
+    }
+
+    override suspend fun upsertArticle(article: Article) {
+        newsDao.upsert(article)
+    }
+
+    override suspend fun deleteArticle(article: Article) {
+        newsDao.delete(article)
+    }
+
+    override fun selectArticles(): Flow<List<Article>> {
+        return newsDao.getArticles()
+    }
+
+    override suspend fun selectArticle(url: String): Article? {
+        return newsDao.getArticle(url)
     }
 }

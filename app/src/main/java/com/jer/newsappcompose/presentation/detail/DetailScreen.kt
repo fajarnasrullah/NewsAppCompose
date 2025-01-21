@@ -3,9 +3,11 @@ package com.jer.newsappcompose.presentation.detail
 import android.content.Intent
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.net.Uri
+import androidx.compose.foundation.background
 import androidx.compose.foundation.content.MediaType.Companion.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -71,7 +73,8 @@ fun DetailsScreen(
 
         LazyColumn (
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background),
             contentPadding = PaddingValues(
                 start = MediumPadding1,
                 end = MediumPadding1,
@@ -87,19 +90,22 @@ fun DetailsScreen(
                     .height(300.dp)
                     .clip(MaterialTheme.shapes.medium)
             )
+            Spacer(modifier = Modifier.height(MediumPadding1))
+
 
             Text(
                 text = article.title,
                 style = MaterialTheme.typography.displaySmall,
-                color = colorResource(
-                    id = R.color.text_title
-                )
+                color = MaterialTheme.colorScheme.secondary
             )
+
+            Spacer(modifier = Modifier.height(MediumPadding1))
 
             Text(
                 text = article.content,
                 style = MaterialTheme.typography.bodyMedium,
-                color = colorResource(id = R.color.body)
+                color = MaterialTheme.colorScheme.secondary
+
             )
         }
 

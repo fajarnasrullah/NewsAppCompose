@@ -36,8 +36,8 @@ fun BookmarkScreen(
 
         Text(
             text = "Bookmark",
-            style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
-            color = colorResource(id = R.color.text_title)
+            style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.SemiBold),
+            color = MaterialTheme.colorScheme.secondary
         )
 
         Spacer(modifier = Modifier.height(MediumPadding1))
