@@ -21,7 +21,7 @@ import com.jer.newsappcompose.presentation.navgraph.Route
 @Composable
 fun BookmarkScreen(
     state: BookmarkState,
-    navigate: (String) -> Unit,
+    navigateToDetail: (Article) -> Unit,
 ) {
 
     Column(modifier = Modifier
@@ -42,7 +42,7 @@ fun BookmarkScreen(
 
         Spacer(modifier = Modifier.height(MediumPadding1))
         
-        ArticleList(articles = state.articles, onClick = { navigate(Route.DetailsScreen.route) })
+        ArticleList(articles = state.articles, onClick = { navigateToDetail(it) })
 
     }
 

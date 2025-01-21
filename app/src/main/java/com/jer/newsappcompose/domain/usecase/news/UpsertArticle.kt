@@ -5,7 +5,7 @@ import com.jer.newsappcompose.domain.model.Article
 
 class UpsertArticle(val newsDao: NewsDao)  {
 
-    suspend fun invoke(article: Article) {
+    suspend operator fun invoke(article: Article) {
         newsDao.upsert(article = article)
     }
 

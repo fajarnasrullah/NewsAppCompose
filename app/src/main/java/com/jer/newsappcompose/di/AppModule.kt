@@ -18,6 +18,7 @@ import com.jer.newsappcompose.domain.usecase.news.GetNews
 import com.jer.newsappcompose.domain.usecase.news.NewsUseCase
 import com.jer.newsappcompose.domain.usecase.news.SearchNews
 import com.jer.newsappcompose.domain.usecase.news.SelectArticle
+import com.jer.newsappcompose.domain.usecase.news.SelectArticles
 import com.jer.newsappcompose.domain.usecase.news.UpsertArticle
 import com.jer.newsappcompose.util.Constants.BASE_URL
 import com.jer.newsappcompose.util.Constants.NEWS_DB_NAME
@@ -25,7 +26,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -74,13 +74,14 @@ object AppModule {
             SearchNews(newsRepository),
             UpsertArticle(newsDao),
             DeleteArticle(newsDao),
+            SelectArticles(newsDao),
             SelectArticle(newsDao)
         )
     }
 
     @Provides
     @Singleton
-    fun provideNewsDatabaase(application: Application): NewsDatabase {
+    fun provideNewsDatabase(application: Application): NewsDatabase {
         return Room.databaseBuilder(
             context = application,
             klass = NewsDatabase::class.java,
